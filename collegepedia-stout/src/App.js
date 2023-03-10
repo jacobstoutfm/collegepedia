@@ -8,7 +8,7 @@ function App() {
                 <ul class="nav-list">
                     <li><a href="#courses">Schools</a></li>
                     <li><a href="#tutorials">Majors</a></li>
-                    <li><a href="#jobs">Students</a></li>
+                    <li><a href="jobs">Students</a></li>
                     <li><a href='#student'>Professors</a></li>
                 </ul>
   

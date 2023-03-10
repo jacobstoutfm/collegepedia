@@ -1,7 +1,7 @@
 const {Client} = require('pg')
 
 const client = new Client({
-    host: "localhost",
+    host: "localhost", /** Changed to Local as AWS is not cooperating at the moment */
     user: "postgres",
     port: 5432,
     password: "seniorproject", // could be rootUser
