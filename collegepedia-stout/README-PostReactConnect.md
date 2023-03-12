@@ -28,3 +28,5 @@ With Axios,
 Inspect --> Network 
 Should have a request here that populates a JSON (parsed?)
 and calls the getUsers method to populate on the page.
+
+***If running npm start gives error about router, run npm i -D react-router-dom***
