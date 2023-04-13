@@ -1,0 +1,121 @@
+﻿//university
+INSERT INTO university (name, address) VALUES ('Rowan University','201 Mullica Hill Rd, Glassboro, NJ 08028');
+INSERT INTO university (name, address) VALUES ('Rutgers University','303 Cooper St, Camden, NJ 08102');
+
+
+//department
+INSERT INTO department (name, university_id) VALUES ('Computer Science', 1);
+INSERT INTO department (name, university_id) VALUES ('Computer Science', 2);
+INSERT INTO department (name, university_id) VALUES ('Mathematics', 1);
+INSERT INTO department (name, university_id) VALUES ('Mathematics', 2);
+
+
+//major
+INSERT INTO major (name, department_id) VALUES ('Computer Science', 1);
+INSERT INTO major (name, department_id) VALUES ('Computing and Informatics', 1);
+INSERT INTO major (name, department_id) VALUES ('Computer Science', 2); 
+INSERT INTO major (name, department_id) VALUES ('Mathematics', 3);
+INSERT INTO major (name, department_id) VALUES ('Mathematics', 4); 
+INSERT INTO major (name, department_id) VALUES ('Applied and Computational Mathematics', 4);
+
+
+//course
+INSERT INTO course (name, code, major_id) VALUES ('Computer Lab Techniques','CS 01205','1'); 
+INSERT INTO course (name, code, major_id) VALUES ('Design and Analysis of Algorithms','CS 07340','1');
+INSERT INTO course (name, code, major_id) VALUES ('Computer Lab Techniques','CS 01205','2'); 
+INSERT INTO course (name, code, major_id) VALUES ('Principles of Data Structures','CS 04225','2'); 
+INSERT INTO course (name, code, major_id) VALUES ('Programming Fundamentals','50:198:111','3');
+INSERT INTO course (name, code, major_id) VALUES ('Data Structures','50:198:213','3');
+INSERT INTO course (name, code, major_id) VALUES ('Calculus 1','Math 01130','4');
+INSERT INTO course (name, code, major_id) VALUES ('Calculus 2','Math 01131','4'); 
+INSERT INTO course (name, code, major_id) VALUES ('Calculus 1','50:640:121','5');
+INSERT INTO course (name, code, major_id) VALUES ('Calculus 2','50:640:122','5');
+INSERT INTO course (name, code, major_id) VALUES ('Calculus 1','50:640:121','6');
+INSERT INTO course (name, code, major_id) VALUES ('Calculus 2','50:640:122','6');
+
+
+
+
+// Professors 
+INSERT INTO professor (first_name, last_name ) VALUES ('Darren', 'Provine');
+INSERT INTO professor (first_name, last_name ) VALUES ('Brandon', 'Pugh');
+INSERT INTO professor (first_name, last_name ) VALUES ('Edward', 'Stockton');
+INSERT INTO professor (first_name, last_name ) VALUES ('Rafael', 'Orta');
+INSERT INTO professor (first_name, last_name ) VALUES ('Ganesh', 'Baliga');
+INSERT INTO professor (first_name, last_name ) VALUES ('Gabriela', 'Hristescu');
+INSERT INTO professor (first_name, last_name ) VALUES ('Abera', 'Abay');
+INSERT INTO professor (first_name, last_name ) VALUES ('Elizabeth', 'Volz');
+INSERT INTO professor (first_name, last_name ) VALUES ('Beca', 'Lufi');
+INSERT INTO professor (first_name, last_name ) VALUES ('Shannon', 'Miller');
+INSERT INTO professor (first_name, last_name ) VALUES ('Guy', 'Kortsarz');
+INSERT INTO professor (first_name, last_name ) VALUES ('Rajive', 'Gandhi');
+INSERT INTO professor (first_name, last_name ) VALUES ('Tejas', 'Shah');
+INSERT INTO professor (first_name, last_name ) VALUES ('Desmond', 'Lun');
+INSERT INTO professor (first_name, last_name ) VALUES ('Yun', 'Yoo');
+INSERT INTO professor (first_name, last_name ) VALUES ('Sara', 'Leshen');
+INSERT INTO professor (first_name, last_name ) VALUES ('Ryan', 'Weighttman');
+
+
+//Teaches 
+INSERT INTO teaches (professor_id, course_id ) VALUES ('1', '1');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('1', '3');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('2', '3');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('3', '4');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('4', '4');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('5', '2');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('6', '2');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('7', '7');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('8', '7');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('9', '8');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('10', '8');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('11', '6');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('12', '6');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('13', '5');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('14', '5');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('15', '9');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('15', '10');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('15', '11');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('15', '12');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('16', '9');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('16', '10');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('16', '11');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('16', '12');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('17', '9');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('17', '10');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('17', '11');
+INSERT INTO teaches (professor_id, course_id ) VALUES ('17', '12');
+
+
+//housing
+
+INSERT INTO housing (name, location, university_id) VALUES ('Mimosa Hall', 'Rowan University Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Evergreen Hall','401 Whitney Ave, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Mullica Hall','53 Mullica Hill Rd, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Chestnut Hall','49-75 Carpenter St, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Magnolia Hall', 'Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Willow Hall', 'Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Holly Pointe Commons', '15 Carpenter St, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Edgewood Park Apartments', '400 Edgewood Drive, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Rowan Blvd. Apartments', '100 Redmond Ave, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Rowan Townhouse Complex', '400 Townhouse Drive, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('The Whitney Center', '300 Rowan Boulevard, Glassboro, NJ 08028','1');
+INSERT INTO housing (name, location, university_id) VALUES ('Camden Tower', '215 N 3rd St, Camden, NJ 08102','2');
+INSERT INTO housing (name, location, university_id) VALUES ('Camden Apartments', '215 N 3rd St, Camden, NJ 08102','2');
+INSERT INTO housing (name, location, university_id) VALUES ('330 Cooper', '330 Cooper St Camden, NJ 08102','2');
+
+
+//service 
+INSERT INTO service (name, university_id) VALUES ('Wellness Center','1');
+INSERT INTO service (name, university_id) VALUES ('Fresh For All','1');
+INSERT INTO service (name, university_id) VALUES ('Rowan CCAMPIS ','1');
+INSERT INTO service (name, university_id) VALUES ('Tutoring Services','1');
+INSERT INTO service (name, university_id) VALUES ('Rowan After Hours','1');
+INSERT INTO service (name, university_id) VALUES ('Campus Recreation','1');
+INSERT INTO service (name, university_id) VALUES ('Gourmet Dining','1');
+INSERT INTO service (name, university_id) VALUES ('RowanCard Services','2');
+INSERT INTO service (name, university_id) VALUES ('Camden Learning Center','2');
+INSERT INTO service (name, university_id) VALUES ('Supplemental Instruction (SI)','2');
+INSERT INTO service (name, university_id) VALUES ('TRiO Student Support Services (SSS) ','2');
+INSERT INTO service (name, university_id) VALUES ('Student Wellness Center','2');
+INSERT INTO service (name, university_id) VALUES ('Athletic & Fitness Center','2');
+INSERT INTO service (name, university_id) VALUES ('Camden Raptor Pantry','2');
