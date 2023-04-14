@@ -17,7 +17,19 @@ const getUsers = (request, response) => {
     })
   }
 
+  const createUser = (request, response) => {
+    const { id, username, email, password } = request.body
+  
+    pool.query('INSERT INTO storedUsers (id, username, email, password) VALUES ($1, $2, $3, $4)', [id, username, email, password], (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(201).send(`User added with ID: ${results.insertId}`)
+    })
+  }
+
   module.exports = {
     getUsers,
+    createUser,
     userTable
   };

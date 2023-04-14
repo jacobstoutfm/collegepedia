@@ -4,28 +4,19 @@ const bcrypt = require('bcrypt');
 const path = require("path");
 const bodyParser = require('body-parser');
 const users = require('./data').userTable;
+const userSet = require('./data');
 const port = 4000;
-
-
-// // app.get('/', (request, response) => {
-// //     response.json({ info: 'Node.js, Express, and Postgres API' })
-// //   })
-
-//   app.get('/students', db.getUsers)
-
-
 const app = express();
 const server = http.createServer(app);
 
 
-app.use(bodyParser.urlencoded({extended: true})); //change to false if error
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname,'./public')));
 
 
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'./public/index.html'));
 });
-
 
 app.post('/register', async (req, res) => {
     try{
@@ -42,7 +33,6 @@ app.post('/register', async (req, res) => {
             };
             users.push(newUser);
             console.log('User list', users);
-    
             res.send("<div align ='center'><h2>Registration Successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./registration.html'>Register another account.</a></div>");
         } else {
             res.send("<div align ='center'><h2>Email already in use.</h2></div><br><br><div align='center'><a href='./registration.html'>Register again</a></div>");
@@ -51,6 +41,8 @@ app.post('/register', async (req, res) => {
         res.send("Internal server error");
     }
 });
+
+app.get('/register2', userSet.getUsers);
 
 app.post('/login', async (req, res) => {
     try{
