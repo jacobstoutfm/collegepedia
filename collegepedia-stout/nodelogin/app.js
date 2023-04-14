@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const path = require("path");
 const bodyParser = require('body-parser');
 const users = require('./data').userDB;
+const port = 4000;
 
 const app = express();
 const server = http.createServer(app);
@@ -33,9 +34,9 @@ app.post('/register', async (req, res) => {
             users.push(newUser);
             console.log('User list', users);
     
-            res.send("<div align ='center'><h2>Registration successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./registration.html'>Register another user</a></div>");
+            res.send("<div align ='center'><h2>Registration Successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./registration.html'>Register another account.</a></div>");
         } else {
-            res.send("<div align ='center'><h2>Email already used</h2></div><br><br><div align='center'><a href='./registration.html'>Register again</a></div>");
+            res.send("<div align ='center'><h2>Email already in use.</h2></div><br><br><div align='center'><a href='./registration.html'>Register again</a></div>");
         }
     } catch{
         res.send("Internal server error");
@@ -53,9 +54,9 @@ app.post('/login', async (req, res) => {
             const passwordMatch = await bcrypt.compare(submittedPass, storedPass);
             if (passwordMatch) {
                 let usrname = foundUser.username;
-                res.send(`<div align ='center'><h2>login successful</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href='./login.html'>logout</a></div>`);
+                res.send(`<div align ='center'><h2>Login Successful!</h2></div><br><br><br><div align ='center'><h3>Hello ${usrname}</h3></div><br><br><div align='center'><a href="http://localhost:3000/">Continue to website.</a></div>`);
             } else {
-            res.send("<div align ='center'><h2>Invalid email or password</h2></div><br><br><div align ='center'><a href='./login.html'>login again</a></div>");
+            res.send("<div align ='center'><h2>Invalid email or password.</h2></div><br><br><div align ='center'><a href='./login.html'>Back to login page.</a></div>");
             }
         }
         else {
@@ -71,6 +72,6 @@ app.post('/login', async (req, res) => {
 });
 
 
-server.listen(3000, function(){
-    console.log("server is listening on port: 3000");
+server.listen(4000, function(){
+    console.log("server is listening on port: 4000");
 });
