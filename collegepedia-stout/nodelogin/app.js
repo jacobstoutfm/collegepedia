@@ -3,13 +3,22 @@ const http = require('http');
 const bcrypt = require('bcrypt');
 const path = require("path");
 const bodyParser = require('body-parser');
-const users = require('./data').userDB;
+const users = require('./data').userTable;
 const port = 4000;
+
+
+// // app.get('/', (request, response) => {
+// //     response.json({ info: 'Node.js, Express, and Postgres API' })
+// //   })
+
+//   app.get('/students', db.getUsers)
+
 
 const app = express();
 const server = http.createServer(app);
 
-app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(bodyParser.urlencoded({extended: true})); //change to false if error
 app.use(express.static(path.join(__dirname,'./public')));
 
 
