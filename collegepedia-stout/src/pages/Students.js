@@ -1,51 +1,32 @@
-import {useState} from 'react';
-import axios from 'axios';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const App = () => {
-  const [data, setData] = useState({data: []});
-  const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState('');
+function App() {
+  const [posts, setPosts] = useState([]);
 
-  const handleClick = async () => {
-    setIsLoading(true);
-    try {
-      const {data} = await axios.get('http://localhost:3000/students', {
-        headers: {
-          Accept: 'application/json'
-        },
-      });
-
-      console.log('data is: ', JSON.stringify(data, null, 4));
-
-      setData(data);
-    } catch (err) {
-      setErr(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  console.log(data);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/students")
+      .then((result) => {
+        console.log(result.data);
+        setPosts(result.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div>
-      {err && <h2>{err}</h2>}
-
-      <button onClick={handleClick}>Print users</button>
-
-      {isLoading && <h2>Loading...</h2>}
-
-      {data.data.map(person => {
+      <h4> These are the registered users who have contributed to Collegepedia: </h4>
+      {posts.map((data) => {
         return (
-          <div key={person.firstname}>
-            <h2>{person.lastname}</h2>
-            <h2>{person.university}</h2>
-            <br />
+          <div key={data.id}>
+            <h4>Name: {data.firstname} {data.lastname}</h4>
+            <p>University: {data.university}  </p>
           </div>
         );
       })}
     </div>
   );
-};
+}
 
 export default App;

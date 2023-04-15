@@ -8,18 +8,6 @@ import Professors from "./pages/Professors"
 import { Route, Routes } from "react-router-dom"
 
 function App() {
-
-  // const [backendData, setBackendData] = useState([{}])
-
-  // useEffect(() => {
-  //   fetch("/students").then(
-  //     response => response.json()
-  //   ).then(
-  //     data => {
-  //       setBackendData(data)
-  //     }
-  //   )
-  // }, [])
   return (
     <>
       <Navbar />

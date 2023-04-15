@@ -11,6 +11,10 @@ app.use(
   })
 )
 
+  app.get('/test', (request, response) => {
+    response.json({info: 'Node.js, Express, and Postgres API'})
+  })
+  
   app.get('/students', db.getUsers)
   app.get('/schools', db.getSchools)
   app.get('/majors', db.getMajors)

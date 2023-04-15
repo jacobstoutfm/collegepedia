@@ -1,50 +1,31 @@
-import {useState} from 'react';
-import axios from 'axios';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const App = () => {
-  const [data, setData] = useState({data: []});
-  const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState('');
+function App() {
+  const [posts, setPosts] = useState([]);
 
-  const handleClick = async () => {
-    setIsLoading(true);
-    try {
-      const {data} = await axios.get('http://localhost:3000/professors', {
-        headers: {
-          Accept: 'application/json'
-        },
-      });
-
-      console.log('data is: ', JSON.stringify(data, null, 4));
-
-      setData(data);
-    } catch (err) {
-      setErr(err.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  console.log(data);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/professors")
+      .then((result) => {
+        console.log(result.data);
+        setPosts(result.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div>
-      {err && <h2>{err}</h2>}
-
-      <button onClick={handleClick}>Print professors</button>
-
-      {isLoading && <h2>Loading...</h2>}
-
-      {data.data.map(person => {
+      {posts.map((data) => {
         return (
-          <div key={person.first_name}>
-            <h2>{person.last_name}</h2>
-            <br />
+          <div key={data.id}>
+            <h4>Professor: {data.first_name} {data.last_name} </h4>
+            <p>Rating:  </p>
           </div>
         );
       })}
     </div>
   );
-};
+}
 
 export default App;
