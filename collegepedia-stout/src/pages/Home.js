@@ -10,7 +10,7 @@ export default function Home() {
                         Collegepedia helps aspiring college students make the best university selection based
                         on their prospective majors and interests.  Students will be able to input their schools
                         of interest and proceed to filter by major.  Students attending schools will be able to
-                        rate and write reviews on the major of choice, departments, dormitories, clubs,
+                        rate and write reviews on the major of choice, departments,
                         faculty/staff/professor, classes and overall experience of the University of choice.
                         </p>
                     </div>

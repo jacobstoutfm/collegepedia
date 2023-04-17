@@ -16,10 +16,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --no-open",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "(start npm run start) & (cd ./node-api-postgres && start npm run start) && (cd ../nodelogin && start npm run start)"
   },
   "eslintConfig": {
     "extends": [
