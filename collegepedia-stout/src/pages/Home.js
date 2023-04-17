@@ -20,19 +20,16 @@ export default function Home() {
                 <div class="box-main">
                     <div class="secondHalf">
                         <h1 class="text-big" id="program">
-                            Sort Your Search!
+                            Contact Us
                         </h1>
                         <p class="text-small">
-                            Sort your search by desired school, major, location, interests or particular
-                            University Services.  Collegepedia provides an open forum of free speech
-                            surrounding curriculum, greek life, housing, tuition, and more.
+                            Contact us at github.com/jacobstoutfm/collegepedia for more information
+                            or to see the source code and documentation for this website. All inquiries
+                            and requests to review, moderate, or delete data from students will be 
+                            processed and responded to on a specific basis. Thank you.
                         </p>
                     </div>
             </div>
             </section>
-        <div class="box-main">
-            <input type="text" name="search" id="search" />
-                <button class="btn btn-sm">Search</button>
-            </div>
     </h1>
   }

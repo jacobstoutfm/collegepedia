@@ -29,8 +29,10 @@ app.post('/register', async (req, res) => {
                 id: Date.now(),
                 username: req.body.username,
                 email: req.body.email,
+                university: req.body.university,
                 password: hashPassword,
             };
+            /** Right here, add option to save localdb data to postgresql. */
             users.push(newUser);
             console.log('User list', users);
             res.send("<div align ='center'><h2>Registration Successful</h2></div><br><br><div align='center'><a href='./login.html'>login</a></div><br><br><div align='center'><a href='./registration.html'>Register another account.</a></div>");
