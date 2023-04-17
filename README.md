@@ -7,13 +7,11 @@ localhost:4000 -- Run and display the login and registration (user-authenticatio
 
 localhost:5000 -- Run the backend server to populate data on the front-end.
 
-To get started with this project, you want to do the following:
+To get started with this project, you just want to run this command:
 
-cd into collegepedia/nodelogin -- run node app.js [starts host:4000]
+npm run dev
 
-cd into collegepedia/node-api-postgres -- run node index.js [starts host:5000]
-
-cd into collegepedia -- run npm start [starts host:3000]
+This command should launch all three servers on their respective ports. 
 
 Once all of the hosts are running, go to localhost:4000 on your browser.
 This will launch the user authentication webpage, which once you register and login,
