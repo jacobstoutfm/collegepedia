@@ -19,6 +19,7 @@ app.use(
   app.get('/schools', db.getSchools)
   app.get('/majors', db.getMajors)
   app.get('/professors', db.getProfessors)
+  app.get('/studentsLogged', db.getStudents)
 
   app.listen(port, () => {
     console.log(`App running on port ${port}.`)

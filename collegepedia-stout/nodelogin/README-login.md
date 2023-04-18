@@ -24,3 +24,7 @@ Summary of hosts:
 localhost:4000 -- Login server
 localhost:3000 -- Webpage server
 localhost:5000 -- Backend server
+
+The nodelogin server now communicates with postgresql. The user information will be saved to a 
+table called storedUsers, and you can now login to the database even after rebooting the servers.
+The user information will also be displayed to the students page on the front-end, localhost:3000.

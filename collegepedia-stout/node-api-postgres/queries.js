@@ -16,6 +16,15 @@ const getUsers = (request, response) => {
     })
   }
 
+  const getStudents = (request, response) => {
+    pool.query('SELECT * FROM "storedUsers"', (error, results) => {
+      if (error) {
+        throw error
+      }
+      response.status(200).json(results.rows)
+    })
+  }
+
   const getSchools = (request, response) => {
     pool.query('SELECT * FROM university', (error, results) => {
       if (error) {
@@ -47,5 +56,6 @@ const getProfessors = (request, response) => {
     getUsers,
     getSchools,
     getMajors,
-    getProfessors
+    getProfessors,
+    getStudents
   }
