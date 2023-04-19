@@ -3,6 +3,11 @@ const bodyParser = require('body-parser')
 const app = express()
 const db = require('./queries')
 const port = 5000
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'http://localhost:3000'
+}))
 
 app.use(bodyParser.json())
 app.use(
@@ -19,6 +24,9 @@ app.use(
   app.get('/schools', db.getSchools)
   app.get('/majors', db.getMajors)
   app.get('/professors', db.getProfessors)
+  app.get('/universityRating', db.getUniRatings)
+
+  app.post("/universityRating", db.addUniRating)
 
   app.listen(port, () => {
     console.log(`App running on port ${port}.`)
