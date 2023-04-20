@@ -53,6 +53,16 @@ function App() {
     window.location.reload(false)
   }
 
+  const getAverageRating = (schoolId) => {
+    const ratings = secondposts.filter((rating) => rating.university_id === schoolId);
+    if (ratings.length === 0) {
+      return "N/A";
+    } else {
+      const sum = ratings.reduce((acc, rating) => acc + rating.rating, 0);
+      const average = sum / ratings.length;
+      return average.toFixed(2);
+    }
+  };
   return (
     <div>
       {posts.map((data) => {
@@ -60,7 +70,7 @@ function App() {
           <div key={data.id}>
             <h4>University: {data.name}</h4>
             <p>Address: {data.address}  </p>
-            <p>Average Rating:  </p>
+            <p> Average Rating: {getAverageRating(data.id)} </p>
             <button onClick={() => handleRating(data.id, 1)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
               </button> 
               <button onClick={() => handleRating(data.id, 2)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
