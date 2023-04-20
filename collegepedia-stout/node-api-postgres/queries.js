@@ -52,10 +52,40 @@ const getProfessors = (request, response) => {
 })
 }
 
+const getComments = (request, response) => {
+  pool.query('SELECT * FROM university_rating', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+})
+}
+
+const getUniRatings = (request, response) => {
+  pool.query('SELECT university.name, AVG(university_rating.rating) as average_rating FROM university_rating JOIN university ON university_rating.university_id = university.id GROUP BY university.name', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+function addUniRating(request, response) {
+  const q = `INSERT INTO university_rating ("university_id","rating","comments") VALUES (${request.body.university_id}, ${request.body.rating}, '${request.body.comments}')`
+    
+    pool.query(q, (err,data)=>{
+      if(err) return response.json(err)
+      return response.json("Successfully added rating.")
+    })
+}
+
   module.exports = {
     getUsers,
-    getSchools,
     getMajors,
+    getSchools,
     getProfessors,
-    getStudents
+    getStudents,
+    getUniRatings,
+    addUniRating,
+    getComments,
   }
