@@ -52,17 +52,9 @@ const getProfessors = (request, response) => {
 })
 }
 
-const getComments = (request, response) => {
-  pool.query('SELECT * FROM university_rating', (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).json(results.rows)
-})
-}
 
 const getUniRatings = (request, response) => {
-  pool.query('SELECT university.name, AVG(university_rating.rating) as average_rating FROM university_rating JOIN university ON university_rating.university_id = university.id GROUP BY university.name', (error, results) => {
+  pool.query('SELECT * FROM university_rating', (error, results) => {
     if (error) {
       throw error
     }
@@ -79,6 +71,42 @@ function addUniRating(request, response) {
     })
 }
 
+function addMajorRatings(request, response) {
+  const q = `INSERT INTO major_rating ("major_id","rating","comments") VALUES (${request.body.major_id}, ${request.body.rating}, '${request.body.comments}')`
+    
+    pool.query(q, (err,data)=>{
+      if(err) return response.json(err)
+      return response.json("Successfully added rating.")
+    })
+}
+
+const getMajorRatings = (request, response) => {
+  pool.query('SELECT * FROM major_rating', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
+function addProfRatings(request, response) {
+  const q = `INSERT INTO professor_rating ("professor_id","rating","comments") VALUES (${request.body.professor_id}, ${request.body.rating}, '${request.body.comments}')`
+    
+    pool.query(q, (err,data)=>{
+      if(err) return response.json(err)
+      return response.json("Successfully added rating.")
+    })
+}
+
+const getProfRatings = (request, response) => {
+  pool.query('SELECT * FROM professor_rating', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
   module.exports = {
     getUsers,
     getMajors,
@@ -87,5 +115,8 @@ function addUniRating(request, response) {
     getStudents,
     getUniRatings,
     addUniRating,
-    getComments,
+    getMajorRatings,
+    addMajorRatings,
+    addProfRatings,
+    getProfRatings
   }

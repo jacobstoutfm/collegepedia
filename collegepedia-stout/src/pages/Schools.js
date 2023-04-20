@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/getComments")
+      .get("http://localhost:3000/universityRating")
       .then((result2) => {
         console.log(result2.data);
         setSecondposts(result2.data);
@@ -60,7 +60,7 @@ function App() {
           <div key={data.id}>
             <h4>University: {data.name}</h4>
             <p>Address: {data.address}  </p>
-            <p>Average Rating: {average} </p>
+            <p>Average Rating:  </p>
             <button onClick={() => handleRating(data.id, 1)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
               </button> 
               <button onClick={() => handleRating(data.id, 2)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
@@ -79,15 +79,14 @@ function App() {
       <h4> These are the comments: </h4>
       <div>
   {secondposts.map((data) => {
-    let universityName = "";
-    if (data.university_id === 1) {
-      universityName = "Rowan";
-    } else if (data.university_id === 2) {
-      universityName = "Rutgers";
-    }
+  let universityName = "";
+  const uni = posts.find((school) => school.id === data.university_id);
+  if (uni) {
+    universityName = `${uni.name}`;
+  }
     return (
       <div key={data.university_id}>
-        <p>{data.comments} | {universityName} University</p>
+        <p>{data.comments} | {data.rating}/5 | {universityName}</p>
       </div>
     );
   })}

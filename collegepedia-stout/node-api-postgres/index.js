@@ -22,7 +22,11 @@ app.use(
   app.get('/studentsLogged', db.getStudents)
   app.get('/universityRating', db.getUniRatings)
   app.post('/universityRating', db.addUniRating)
-  app.get('/getComments', db.getComments)
+  app.get('/majorRating', db.getMajorRatings)
+  app.post('/majorRating', db.addMajorRatings)
+  app.get('/profRating', db.getProfRatings)
+  app.post('/profRating', db.addProfRatings)
+  
   app.listen(port, () => {
     console.log(`App running on port ${port}.`)
   })
