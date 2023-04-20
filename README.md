@@ -22,7 +22,7 @@ Here are some pictures:
 ![alt text](https://imgur.com/UuBNZQJ.png)
 ![alt text](https://imgur.com/TUWvJNx.png)
 ![alt text](https://imgur.com/27zIs48.png)
-![alt text](https://imgur.com/zmqc67X.png)
+![alt text](https://imgur.com/nlp5qLb.png)
 ![alt text](https://imgur.com/eXpYhwM.png)
 
 This project was created by Jacob Stout, Doan Dang, Danial Quasar, and Matthew Custer. 
