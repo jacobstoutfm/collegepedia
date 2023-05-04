@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 function App() {
   const [posts, setPosts] = useState([]);
   const [secondposts, setSecondposts] = useState([]);
+  const [newMajor, setNewMajor] = useState({
+    name: '',
+    department_id: '',
+  });
 
   useEffect(() => {
     axios
@@ -31,12 +35,31 @@ function App() {
     comments: ""
   })
 
+  // const handleRating = (majorId, rating) => {
+    // setRating({
+    //   major_id: majorId,
+    //   rating: rating,
+    //   comments: ""
+    // });
+  // };
+
   const handleRating = (majorId, rating) => {
-    setRating({
-      major_id: majorId,
-      rating: rating,
-      comments: ""
+    const updatedPosts = posts.map((post) => {
+      setRating({
+        major_id: majorId,
+        rating: rating,
+        comments: ""
+      });
+      if (post.id === majorId) {
+        return {
+          ...post,
+          selectedRating: rating,
+        };
+      } else {
+        return post;
+      }
     });
+    setPosts(updatedPosts);
   };
 
   const handleChange = (e) =>{
@@ -64,6 +87,34 @@ function App() {
     }
   };
 
+  const handleNewMajorChange = (e) => {
+    const { name, value } = e.target;
+    setNewMajor((prev) => ({
+      ...prev,
+      [name]: name === "department_id" ? parseInt(value) : value
+    }));
+  };
+
+  const handleNewMajorSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await axios.post(
+        'http://localhost:3000/majorsNew',
+        newMajor
+      );
+      console.log(result.data);
+      setPosts((prev) => [...prev, result.data]); // fix
+      setNewMajor({
+        name: '',
+        department_id: '',
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    window.location.reload(false);
+  };
+
+
   return (
     <div>
       {posts.map((data) => {
@@ -72,21 +123,68 @@ function App() {
             <h4>Major: {data.name}</h4>
             <p>Department: {data.department_id}  </p>
             <p> Average Rating: {getAverageRating(data.id)} </p>
-            <button onClick={() => handleRating(data.id, 1)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
-              </button> 
-              <button onClick={() => handleRating(data.id, 2)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
-              </button> 
-              <button onClick={() => handleRating(data.id, 3)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
-              </button> 
-              <button onClick={() => handleRating(data.id, 4)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
-              </button> 
-            <button onClick={() => handleRating(data.id, 5)}><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height = "25" width="25" alt="star"/> 
-              </button>
+            <button onClick={() => handleRating(data.id, 1)}>
+      {data.selectedRating >= 1 ? (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Red_star.svg/220px-Red_star.svg.png" height="25" width="25" alt="star" />
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height="25" width="25" alt="star" />
+      )}
+    </button>
+    <button onClick={() => handleRating(data.id, 2)}>
+      {data.selectedRating >= 2 ? (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Red_star.svg/220px-Red_star.svg.png" height="25" width="25" alt="star" />
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height="25" width="25" alt="star" />
+      )}
+    </button>
+    <button onClick={() => handleRating(data.id, 3)}>
+      {data.selectedRating >= 3 ? (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Red_star.svg/220px-Red_star.svg.png" height="25" width="25" alt="star" />
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height="25" width="25" alt="star" />
+      )}
+    </button>
+    <button onClick={() => handleRating(data.id, 4)}>
+      {data.selectedRating >= 4 ? (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Red_star.svg/220px-Red_star.svg.png" height="25" width="25" alt="star" />
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height="25" width="25" alt="star" />
+      )}
+    </button>
+    <button onClick={() => handleRating(data.id, 5)}>
+      {data.selectedRating >= 5 ? (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Red_star.svg/220px-Red_star.svg.png" height="25" width="25" alt="star" />
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Full_Star_Yellow.svg/2048px-Full_Star_Yellow.svg.png" height="25" width="25" alt="star" />
+      )}
+    </button>
             <input type="text" placeholder="comments" onChange={handleChange} name="comments"/>
             <button onClick={handleSubmit}>Submit</button>
           </div>
         );
       })}
+            <h4> Add a major: </h4>
+            <form onSubmit={handleNewMajorSubmit}>
+        <label>
+          Major Name:
+          <input
+            type="text"
+            name="name"
+            value={newMajor.name}
+            onChange={handleNewMajorChange}
+          />
+        </label>
+        <label>
+           Department ID:
+          <input
+            type="integer"
+            name="department_id"
+            value={newMajor.departmentID}
+            onChange={handleNewMajorChange}
+          />
+        </label>
+        <button type="submit">Add Major</button>
+      </form>
           <h4> These are the comments: </h4>
           <div>
       {secondposts.map((data) => {

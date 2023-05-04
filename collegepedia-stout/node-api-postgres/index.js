@@ -26,6 +26,9 @@ app.use(
   app.post('/majorRating', db.addMajorRatings)
   app.get('/profRating', db.getProfRatings)
   app.post('/profRating', db.addProfRatings)
+  app.post('/professorsNew', db.addProfessors)
+  app.post('/schoolNew', db.addSchool)
+  app.post('/majorsNew', db.addMajors)
   
   app.listen(port, () => {
     console.log(`App running on port ${port}.`)

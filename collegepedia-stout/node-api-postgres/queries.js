@@ -98,6 +98,33 @@ function addProfRatings(request, response) {
     })
 }
 
+function addProfessors(request, response) {
+  const q = `INSERT INTO professor ("id", "first_name", "last_name") VALUES (DEFAULT, '${request.body.first_name}', '${request.body.last_name}')`;
+    
+  pool.query(q, (err,data)=>{
+    if(err) return response.json(err)
+    return response.json("Successfully added professor.")
+  })
+}
+
+function addSchool(request, response) {
+  const q = `INSERT INTO university ("id", "name", "address") VALUES (DEFAULT, '${request.body.name}', '${request.body.address}')`;
+    
+  pool.query(q, (err,data)=>{
+    if(err) return response.json(err)
+    return response.json("Successfully added school.")
+  })
+}
+
+function addMajors(request, response) {
+  const q = `INSERT INTO major ("id", "name", "department_id") VALUES (DEFAULT, '${request.body.name}', '${request.body.department_id}')`;
+    
+  pool.query(q, (err,data)=>{
+    if(err) return response.json(err)
+    return response.json("Successfully added major.")
+  })
+}
+
 const getProfRatings = (request, response) => {
   pool.query('SELECT * FROM professor_rating', (error, results) => {
     if (error) {
@@ -118,5 +145,8 @@ const getProfRatings = (request, response) => {
     getMajorRatings,
     addMajorRatings,
     addProfRatings,
-    getProfRatings
+    getProfRatings,
+    addProfessors,
+    addSchool,
+    addMajors
   }
